@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0f0e17;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1825;
+}
+::-webkit-scrollbar-thumb {
+  background: #7c5cbf;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9b7fd4;
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-arena-800/60 backdrop-blur-xl border border-arena-700/50 rounded-2xl shadow-lg;
+  }
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300 hover:border-arena-accent/50 hover:shadow-glow;
+  }
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-arena-accent to-purple-600 text-white font-semibold rounded-xl
+           transition-all duration-300 hover:shadow-glow hover:scale-[1.02] active:scale-[0.98];
+  }
+  .btn-secondary {
+    @apply px-6 py-3 bg-arena-700 text-arena-300 font-medium rounded-xl border border-arena-600
+           transition-all duration-300 hover:bg-arena-600 hover:text-white;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 bg-arena-900/80 border border-arena-700 rounded-xl text-white
+           placeholder-arena-600 focus:outline-none focus:border-arena-accent focus:ring-1 focus:ring-arena-accent
+           transition-all duration-200;
+  }
+  .stat-badge {
+    @apply px-3 py-1 text-sm font-mono rounded-lg bg-arena-700/50 text-arena-300;
+  }
+}

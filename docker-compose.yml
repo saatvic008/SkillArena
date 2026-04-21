@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: skillarena-db
+    environment:
+      POSTGRES_DB: skillarena
+      POSTGRES_USER: skillarena
+      POSTGRES_PASSWORD: skillarena_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./skillarena-backend/sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./skillarena-backend/sql/seed_data.sql:/docker-entrypoint-initdb.d/02-seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U skillarena"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: skillarena-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./skillarena-backend
+      dockerfile: Dockerfile
+    container_name: skillarena-backend
+    environment:
+      DATABASE_URL: postgresql+asyncpg://skillarena:skillarena_pass@postgres:5432/skillarena
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY: super-secret-dev-key-change-in-production
+      ALGORITHM: HS256
+      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      REFRESH_TOKEN_EXPIRE_DAYS: 7
+      FRONTEND_URL: http://localhost:3000
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./skillarena-frontend
+      dockerfile: Dockerfile
+    container_name: skillarena-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
