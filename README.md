@@ -1,6 +1,6 @@
 # ♟️ SkillArena
 
-🚀 **[Live Demo: Play SkillArena Here!](https://skillarena.onrender.com)** (or `https://skillarena-frontend-xxxxx.onrender.com` check your Render dashboard for the exact link)
+🚀 **[Live Demo: Play SkillArena Here!](https://skillarena.onrender.com)**
 
 ![SkillArena Dashboard](https://via.placeholder.com/1000x500.png?text=SkillArena+Dashboard+Screenshot+Here) *(Note: Add a screenshot of your dashboard here!)*
 
