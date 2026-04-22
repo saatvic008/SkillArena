@@ -33,6 +33,12 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     rootDir: skillarena-frontend
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: skillarena-api
+          envVarKey: RENDER_EXTERNAL_URL
     headers:
       - path: /*
         name: Cache-Control

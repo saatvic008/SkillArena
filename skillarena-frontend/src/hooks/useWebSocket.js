@@ -11,7 +11,15 @@ export function useWebSocket(matchId) {
   const connect = useCallback(() => {
     if (!matchId || !accessToken) return
 
-    const wsUrl = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws/analysis/${matchId}?token=${accessToken}`
+    const API_BASE = import.meta.env.VITE_API_BASE_URL || ''
+    let wsUrl = ''
+    if (API_BASE) {
+      const url = new URL(API_BASE)
+      const wsProtocol = url.protocol === 'https:' ? 'wss:' : 'ws:'
+      wsUrl = `${wsProtocol}//${url.host}/ws/analysis/${matchId}?token=${accessToken}`
+    } else {
+      wsUrl = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/ws/analysis/${matchId}?token=${accessToken}`
+    }
     setStatus('connecting')
     setMoves([])
 
