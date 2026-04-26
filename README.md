@@ -1,6 +1,6 @@
 # ♟️ SkillArena
 
-![SkillArena Dashboard](https://via.placeholder.com/1000x500.png?text=SkillArena+Dashboard+Screenshot+Here) *(Note: Add a screenshot of your dashboard here!)*
+![SkillArena Dashboard](./dashboard-screenshot.png)
 
 **SkillArena** is a full-stack, AI-powered chess analytics and training platform. It allows users to import their chess games, analyze their gameplay for blunders and inaccuracies, and improve their skills through personalized tactical and endgame drills based on their specific weaknesses.
 
