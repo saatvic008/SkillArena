@@ -1,7 +1,5 @@
 # ♟️ SkillArena
 
-🚀 **[Live Demo: Play SkillArena Here!](https://skillarena.onrender.com)**
-
 ![SkillArena Dashboard](https://via.placeholder.com/1000x500.png?text=SkillArena+Dashboard+Screenshot+Here) *(Note: Add a screenshot of your dashboard here!)*
 
 **SkillArena** is a full-stack, AI-powered chess analytics and training platform. It allows users to import their chess games, analyze their gameplay for blunders and inaccuracies, and improve their skills through personalized tactical and endgame drills based on their specific weaknesses.
@@ -54,10 +52,6 @@ Running SkillArena on your local machine is incredibly easy thanks to Docker.
     ```bash
     docker-compose down
     ```
-
-## ☁️ Deployment
-
-SkillArena is configured to be easily deployed to [Render](https://render.com) using the included `render.yaml` Blueprint file. It requires an external Redis instance (such as [Upstash](https://upstash.com/)).
 
 ---
 *Built by [saatvic008]*
