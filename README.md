@@ -53,5 +53,10 @@ Running SkillArena on your local machine is incredibly easy thanks to Docker.
     docker-compose down
     ```
 
+## 👥 Contributors
+
+*   **[saatvic008](https://github.com/saatvic008)**
+*   **[vyshnavii-007](https://github.com/vyshnavii-007)**
+
 ---
-*Built by [saatvic008]*
+*Built with ❤️ by the SkillArena Team*
